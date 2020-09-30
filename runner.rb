@@ -4,7 +4,7 @@ cli = Cli.new
 cli.start
 cli.user_pick
 
-binding.pry
+
 
 
 # INSTRUCTIONS FOR WHAT I HAVE SO FAR:

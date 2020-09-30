@@ -40,23 +40,39 @@ class Cli
         user_size = @prompt.select("Hello #{@user}, what kind of dog are you looking for?\n\n", trait_choices)
     end
 
+    
+    
+    
+    
     def trait_choices
-        
-        {"   Large": -> { get_large_dog_type },
-        "   Medium": -> { get_medium_dog_type },
-        "   Small": -> { get_small_dog_type },
-    }
+
+        {
+            "Large": ->{get_large_dog_type},
+            "Medium": ->{get_medium_dog_type},
+            "Small": ->{get_small_dog_type}
+        }
     end
+    
+    
+    
+
+        
+
+
 
     
     def get_large_dog_type
-        Dog.all.large
+        Dog.all.select {|dog| dog.size == 'Large'}
+        .map {|l_dogs| puts l_dogs.name }
     end
+
     def get_medium_dog_type
-        Dog.all.select {|dog|dog[:size] == 'medium'}
+        Dog.all.select {|dog|dog[:size] == 'Medium'}
+        .map {|m_dogs| puts m_dogs.name }
     end
     def get_small_dog_type
-        Dog.all.select {|dog|dog[:size] == 'small'}
+        Dog.all.select {|dog|dog[:size] == 'Small'}
+        .map {|s_dogs| puts s_dogs.name }
     end
     
     # def male_or_female
