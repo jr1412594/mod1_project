@@ -2,8 +2,11 @@ require_relative 'config/environment'
 
 cli = Cli.new
 cli.start
-cli.user_pick
+cli.smalls
 
+
+
+binding.pry
 
 
 

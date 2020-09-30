@@ -37,43 +37,35 @@ class Cli
 
     def what_pet
         system("clear")
-        user_size = @prompt.select("Hello #{@user}, what kind of dog are you looking for?\n\n", trait_choices)
+        user_choice = @prompt.select("Hello #{@user}, what kind of dog are you looking for?\n\n", trait_choices)
     end
 
-    
-    
-    
-    
     def trait_choices
 
         {
-            "Large": ->{get_large_dog_type},
-            "Medium": ->{get_medium_dog_type},
-            "Small": ->{get_small_dog_type}
+            "Large": ->{get_dog_type('Large')},
+            "Medium": ->{get_dog_type('Medium')},
+            "Small": ->{get_dog_type('Small')}
         }
     end
-    
-    
-    
 
-        
-
-
-
-    
-    def get_large_dog_type
-        Dog.all.select {|dog| dog.size == 'Large'}
-        .map {|l_dogs| puts l_dogs.name }
+    def get_dog_type (size)
+        selected_dog_by_size = Dog.select {|dog| dog.size == size}.map(&:breed)
+        system('clear')
+        @prompt.select("what breed?", selected_dog_by_size)
+        # binding.pry
     end
 
-    def get_medium_dog_type
-        Dog.all.select {|dog|dog[:size] == 'Medium'}
-        .map {|m_dogs| puts m_dogs.name }
-    end
-    def get_small_dog_type
-        Dog.all.select {|dog|dog[:size] == 'Small'}
-        .map {|s_dogs| puts s_dogs.name }
-    end
+
+
+
+
+
+    
+
+
+
+
     
     # def male_or_female
     #     system('clear')
@@ -89,5 +81,4 @@ class Cli
     
 end
 
-# pancake_choices = Pancake.all.pluck(:name)
-# Chosen_pancake_name = prompt.select('Choose your pancake?', pancake_choices)
+
