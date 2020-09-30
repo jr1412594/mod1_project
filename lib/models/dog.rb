@@ -6,6 +6,6 @@ class Dog < ActiveRecord::Base
             dog.name == dog_name
          end
     end
-
+# binding.pry
     
 end
