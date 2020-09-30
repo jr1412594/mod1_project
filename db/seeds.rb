@@ -15,3 +15,5 @@ dog12 = Dog.create breed: 'Bullmastivel', age: 10, name: 'Roxy', weight: 65, siz
 dog13 = Dog.create breed: 'Alaskan Malamute', age: 10, name: 'Eve', weight: 70, size: 'Large', life_expectancy: 12, sex: 'Male', price: 250
 dog14 = Dog.create breed: 'English Mastive', age: 10, name: 'Thor', weight: 75, size: 'Large', life_expectancy: 12, sex: 'Male', price: 200
 dog15 = Dog.create breed: 'Tibetan Mastive', age: 7, name: 'Lucifer', weight: 145, size: 'Large', life_expectancy: 15, sex: 'Male', price: 500
+binding.pry
+0
