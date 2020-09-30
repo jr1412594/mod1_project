@@ -4,7 +4,7 @@ cli = Cli.new
 cli.start
 
 
-binding.pry
+
 
 
 # INSTRUCTIONS FOR WHAT I HAVE SO FAR:
