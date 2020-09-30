@@ -19,6 +19,7 @@ class Cli
         system('clear')
         puts "Welcome to the pet store!\n\nWhat is your name?"
         @user = gets.chomp
+        # user = User.create(username: username)  this might be useful!
         see_pet
     end
 
@@ -36,7 +37,7 @@ class Cli
 
     def what_pet
         system("clear")
-        @prompt.select("Hello #{@user}, what kind of dog are you looking for?\n\n", trait_choices)
+        user_size = @prompt.select("Hello #{@user}, what kind of dog are you looking for?\n\n", trait_choices)
     end
 
     
@@ -44,6 +45,7 @@ class Cli
     
     
     def trait_choices
+
         {
             "Large": ->{get_large_dog_type},
             "Medium": ->{get_medium_dog_type},
@@ -51,6 +53,13 @@ class Cli
         }
     end
     
+    
+    
+
+        
+
+
+
     
     def get_large_dog_type
         Dog.all.select {|dog| dog.size == 'Large'}
@@ -65,9 +74,20 @@ class Cli
         Dog.all.select {|dog|dog[:size] == 'Small'}
         .map {|s_dogs| puts s_dogs.name }
     end
-
+    
+    # def male_or_female
+    #     system('clear')
+    #     user_sex = @prompt.select("Are you looking for a male or female?\n\n", sex_choices)
+    # end
+    
+    # def sex_choices
+    #     %w(Male Female)
+    
     def exit_cli
         
     end
     
 end
+
+# pancake_choices = Pancake.all.pluck(:name)
+# Chosen_pancake_name = prompt.select('Choose your pancake?', pancake_choices)
