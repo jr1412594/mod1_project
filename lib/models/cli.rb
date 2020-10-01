@@ -118,11 +118,15 @@ class Cli
         def extras
             options = %w(Leash Collar Bowl Treats Food Bed Toy)
             access = @prompt.multi_select("Would you like to buy any accessories?", options)
+            if access.length > 1
             last = access.last
             broken = access.pop
             broken = access.join(", ")+ ", and " + last
             system('clear')
             puts "Have a great day #{@user}, and we know #{@meet_this_one} will enjoy the #{broken}."
+            else
+                puts "have a great day #{@user} and we know #{@meet_this_one} will enjoy the #{access[0]}"
+          end
         end
 
     def exit_cli
