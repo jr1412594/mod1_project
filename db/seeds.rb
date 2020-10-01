@@ -16,4 +16,7 @@ dog13 = Dog.create breed: 'Alaskan Malamute', age: 10, name: 'Eve', weight: 70, 
 dog14 = Dog.create breed: 'Chihuahua', age: 10, name: 'Thor', weight: 7, size: 'Small', life_expectancy: 20, sex: 'Male', price: 200
 dog15 = Dog.create breed: 'Tibetan Mastive', age: 7, name: 'Lucifer', weight: 145, size: 'Large', life_expectancy: 15, sex: 'Male', price: 500
 
+product1 = Product.create name: 'Premium Dry Dog-food', description: 'Healthy Organic Dry Kibble', price: 25
+product2 = Product.create name: 'Premium wet Dog-food', description: 'Healthy Organic Wet-food', price: 20
 
+purchase1 = Purchase.create dog: dog1, product: product2
