@@ -1,4 +1,5 @@
 Dog.destroy_all
+Product.destroy_all
 
 dog1 = Dog.create breed: 'Pitbull', age: 10, name: 'Duke', weight: 85, size: 'Large', life_expectancy: 15, sex: 'Male', price: 400
 dog2 = Dog.create breed: 'Wolf', age: 4, name: 'Kachina', weight: 75, size: 'Large', life_expectancy: 20, sex: 'Female', price: 100
@@ -16,7 +17,14 @@ dog13 = Dog.create breed: 'Alaskan Malamute', age: 10, name: 'Eve', weight: 70, 
 dog14 = Dog.create breed: 'Chihuahua', age: 10, name: 'Thor', weight: 7, size: 'Small', life_expectancy: 20, sex: 'Male', price: 200
 dog15 = Dog.create breed: 'Tibetan Mastive', age: 7, name: 'Lucifer', weight: 145, size: 'Large', life_expectancy: 15, sex: 'Male', price: 500
 
-product1 = Product.create name: 'Premium Dry Dog-food', description: 'Healthy Organic Dry Kibble', price: 25
-product2 = Product.create name: 'Premium wet Dog-food', description: 'Healthy Organic Wet-food', price: 20
+product1 = Product.create name: 'Leash', description: 'Flexi Leash', price: 25
+product2 = Product.create name: 'Collar', description: 'Studded', price: 20
+product2 = Product.create name: 'Bowl', description: 'Water Fountain', price: 20
+product2 = Product.create name: 'Treats', description: 'Milk Bone', price: 20
+product2 = Product.create name: 'Food', description: 'Healthy Organic Wet-food', price: 20
+product2 = Product.create name: 'Bed', description: 'Cozy', price: 20
+product2 = Product.create name: 'Toy', description: 'Bone', price: 20
 
-purchase1 = Purchase.create dog: dog1, product: product2
+# purchase1 = Purchase.create dog: dog1, product: product2
+
+
