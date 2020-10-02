@@ -13,16 +13,10 @@
 * [License](#license)
 
 ## Getting Started
-*
-
-
-
-
-
-
-
-
-
+* 1. In your terminal, you need to run 'bundle install'
+* 2. Run the command: rake db:migrate
+* 3. Run the command: rake db:seed
+* 4. Run the command: ruby runner.rb. Welcome!
 
 ## About
 
@@ -36,24 +30,20 @@ ThePetStore app, built by three flatiron students looking to help people add a n
 * Select products you would like to purchase along with your new friend.
 * Gives total price of dog and prducts you wish to purchase.
 
-## Technologies
-
-
-
-
-
-
-
-
-
-
-
+## Tech
+* Ruby Version 2.6.1
+* activerecord 6.0
+* sinatra-activerecord 2.0
+* rake 13.0
+* sqlite3 1.4
+* tty-prompt 0.22.0
 
 ## Contact
 
-Made by [Jake Sanders](https://www.linkedin.com/in/jack-sanders-5519381b1/), [Niel Cnops](https://www.linkedin.com/in/niel-cnops-323556168/), and [Jr Medina](https://www.linkedin.com/in/jrmedina1412/)
+Made by [Jack Sanders](https://www.linkedin.com/in/jack-sanders-5519381b1/), [Niel Cnops](https://www.linkedin.com/in/niel-cnops-323556168/), and [Jr Medina](https://www.linkedin.com/in/jrmedina1412/)
 
 ## License
 
 [License Agrement](PetStoreApp_License.pdf)
+
 
