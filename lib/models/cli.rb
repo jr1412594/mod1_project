@@ -20,15 +20,12 @@ class Cli
 
     def start
         system('clear')
+        system("rake db:seed")
         puts "Welcome to the pet store!\n\nWhat is your name?"
         @user = gets.chomp
         # user = User.create(username: username)  this might be useful!
         see_pet
     end
-
-    # def user_create
-    #     @user == User.create(name: @user)
-    # end
 
     def see_pet
         system('clear')
@@ -59,14 +56,6 @@ class Cli
         system("clear")
         @user_choice = @prompt.select("What kind of dog are you looking for #{@user}?\n\n", Dog.all.pluck(:size).uniq)
     end
-
-    # def what_pet_2
-    #     system("clear")
-    #     @user_choice = @prompt.select("What kind of dog are you looking for?\n\n", Dog.all.pluck(:size).uniq) 
-    #     male_female
-    # end
-    
-   
         
         def male_female 
             puts "Would you like a male or female dog? Enter M/F"
@@ -115,13 +104,21 @@ class Cli
             end
         end
 
+        def total_price(all_products, the_pick)
+            the_money = Purchase.all.select {|selected_purchase| selected_purchase.dog.id == the_pick.id}
+            .reduce(0) {|acc, selected_purchase| acc + selected_purchase.product.price} + the_pick.price
+            binding.pry
+
+        end
+
+
+
         def check_out(access, the_pick)
             all_products = access.map {|selected_product| Product.find_by_name(selected_product)}
             all_products.each {|selected_product| Purchase.create(dog: the_pick, product: selected_product)}
-            binding.pry
-            # Product.find_by_name(access)
+            total_price(all_products, the_pick)
         end
-            #     Purchase.create(dog: dog_selection, product: product)
+           
 
         def extras
             options = Product.all.pluck(:name)
@@ -130,7 +127,6 @@ class Cli
             the_pick = Dog.call_by_name(@meet_this_one)
             check_out(access, the_pick)
             if access.length > 1
-                # product_saver(the_pick, product_select)
                 last = access.last
                 broken = access.pop
                 broken = access.join(", ")+ ", and " + last
@@ -146,14 +142,9 @@ class Cli
           end
         end
 
-    # def product_create
-    #     Product.create(dog: @meet_this_one, product: access[0])
-    # end
-
     def exit_cli
         puts "I hope the rest of your day is as plasent as you are."
     end
     
 end
-
 
