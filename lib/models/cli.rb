@@ -22,7 +22,8 @@ class Cli
     def start
         system('clear')
         system("rake db:seed")
-        puts "Welcome to the pet store!\n\nWhat is your name?"
+        put_pic
+        puts "\n\nWelcome to the pet store!\n\nWhat is your name?"
         @user = gets.chomp
         # user = User.create(username: username)  this might be useful!
         see_pet
@@ -39,7 +40,7 @@ class Cli
             system('clear')
             puts "Thanks for stopping by!"
             exit_cli
-            start
+            # start
             ###Loop needs to be fixed for "N"
         end
     end
@@ -56,6 +57,7 @@ class Cli
     def what_pet
         system("clear")
         @user_choice = @prompt.select("What kind of dog are you looking for #{@user}?\n\n", Dog.all.pluck(:size).uniq)
+        male_female
     end
         
         def male_female 
@@ -63,9 +65,11 @@ class Cli
             answer = gets.chomp
             if answer == "M"
                 male_name
+                who_would_you_like_to_meet
             else 
                 answer == "F"
                 female_name
+                who_would_you_like_to_meet
             end
         end
         
@@ -81,6 +85,7 @@ class Cli
         def who_would_you_like_to_meet
             system('clear')
             @meet_this_one = @prompt.select("Who would you like to meet?", @choice)
+            dog_specs
         end
 
         def dog_specs 
@@ -124,8 +129,8 @@ class Cli
 
         def extras
             options = Product.all.pluck(:name)
-            access = @prompt.multi_select("Would you like to buy any accessories?", options)
-            # product_select = Product.find_by_name(access)
+            access = @prompt.multi_select("Would you like to buy any accessories?", options, per_page: 7)
+            # product_select = Product.find_by_name(access) 
             the_pick = Dog.call_by_name(@meet_this_one)
             check_out(access, the_pick)
             if access.length > 1
@@ -134,12 +139,14 @@ class Cli
                 broken = access.join(", ")+ ", and " + last
                 system('clear')
                 puts "Thank you #{@user}! Your total price altogether for #{@meet_this_one} the #{broken} is $#{@the_money}\n\nHave a great day, and we know #{@meet_this_one} will enjoy the #{broken}."
+                exit_cli
             else
                 puts "Thank you! #{user}! Your total price altogether for #{@meet_this_one} the #{access[0]} is $#{@the_money}\n\nHave a great day, and we know #{@meet_this_one} will enjoy the #{access[0]}"
                 
                 Purchase.create(dog: the_pick, product: product_select)
                 # binding.pry
                 system("rake db:seed")
+                exit_cli
                 
           end
         end
