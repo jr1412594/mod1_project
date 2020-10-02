@@ -1,5 +1,6 @@
 Dog.destroy_all
 Product.destroy_all
+Purchase.destroy_all
 
 dog1 = Dog.create breed: 'Pitbull', age: 10, name: 'Duke', weight: 85, size: 'Large', life_expectancy: 15, sex: 'Male', price: 400
 dog2 = Dog.create breed: 'Wolf', age: 4, name: 'Kachina', weight: 75, size: 'Large', life_expectancy: 20, sex: 'Female', price: 100

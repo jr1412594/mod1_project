@@ -115,11 +115,22 @@ class Cli
             end
         end
 
+        def check_out(access, the_pick)
+            all_products = access.map {|selected_product| Product.find_by_name(selected_product)}
+            all_products.each {|selected_product| Purchase.create(dog: the_pick, product: selected_product)}
+            binding.pry
+            # Product.find_by_name(access)
+        end
+            #     Purchase.create(dog: dog_selection, product: product)
+
         def extras
             options = Product.all.pluck(:name)
             access = @prompt.multi_select("Would you like to buy any accessories?", options)
-            product_select = Product.find_by_name(access)
+            # product_select = Product.find_by_name(access)
+            the_pick = Dog.call_by_name(@meet_this_one)
+            check_out(access, the_pick)
             if access.length > 1
+                # product_saver(the_pick, product_select)
                 last = access.last
                 broken = access.pop
                 broken = access.join(", ")+ ", and " + last
@@ -127,7 +138,6 @@ class Cli
                 puts "Have a great day #{@user}, and we know #{@meet_this_one} will enjoy the #{broken}."
             else
                 puts "have a great day #{@user} and we know #{@meet_this_one} will enjoy the #{access[0]}"
-                the_pick = Dog.call_by_name(@meet_this_one)
                 
                 Purchase.create(dog: the_pick, product: product_select)
                 # binding.pry
