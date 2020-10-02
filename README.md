@@ -1,3 +1,4 @@
+
 # ThePetStore
 
 >Socially Distanced Dog and Accessory Purchasing App
@@ -55,3 +56,4 @@ Made by [Jake Sanders](https://www.linkedin.com/in/jack-sanders-5519381b1/), [Ni
 ## License
 
 [License Agrement](PetStoreApp_License.pdf)
+
