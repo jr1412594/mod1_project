@@ -5,12 +5,17 @@
 
 ## Table of Contents
 
+* [Demo Video](#demo video)
 * [Getting Started](#getting_started)
 * [About](#about)                 
 * [Features](#features)
 * [Technologies](#technilogies)
 * [Contact](#contact)
 * [License](#license)
+
+## Demo Video
+
+[ThePetStore App](https://www.loom.com/share/ddafae29e5024a48a5cb511791cbf663)
 
 ## Getting Started
 * 1. In your terminal, you need to run 'bundle install'
