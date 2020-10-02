@@ -117,6 +117,7 @@ class Cli
             all_products = access.map {|selected_product| Product.find_by_name(selected_product)}
             all_products.each {|selected_product| Purchase.create(dog: the_pick, product: selected_product)}
             total_price(all_products, the_pick)
+
         end
            
 
@@ -131,9 +132,9 @@ class Cli
                 broken = access.pop
                 broken = access.join(", ")+ ", and " + last
                 system('clear')
-                puts "Have a great day #{@user}, and we know #{@meet_this_one} will enjoy the #{broken}."
+                puts "Thank you #{@user}! Your total price altogether for #{@meet_this_one} the #{broken} is $10000\n\nHave a great day, and we know #{@meet_this_one} will enjoy the #{broken}."
             else
-                puts "have a great day #{@user} and we know #{@meet_this_one} will enjoy the #{access[0]}"
+                puts "Thank you! #{user}! Your total price altogether for #{@meet_this_one} the #{access[0]} is $10000\n\nHave a great day, and we know #{@meet_this_one} will enjoy the #{access[0]}"
                 
                 Purchase.create(dog: the_pick, product: product_select)
                 # binding.pry
