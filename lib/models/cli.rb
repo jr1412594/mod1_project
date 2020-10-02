@@ -152,7 +152,7 @@ class Cli
         end
 
     def exit_cli
-        puts "I hope the rest of your day is as plasent as you are."
+        puts "We hope the rest of your day is as pleasent as you are."
     end
     
 end
