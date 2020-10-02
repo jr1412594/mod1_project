@@ -5,7 +5,7 @@
 
 ## Table of Contents
 
-* [Demo Video](#demo video)
+* [Demo Video](#demo_video)
 * [Getting Started](#getting_started)
 * [About](#about)                 
 * [Features](#features)
