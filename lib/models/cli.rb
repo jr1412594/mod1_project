@@ -16,6 +16,7 @@ class Cli
         @user_choice = nil
         @choice = nil
         @meet_this_one = nil
+        @the_money = nil
     end
 
     def start
@@ -105,9 +106,9 @@ class Cli
         end
 
         def total_price(all_products, the_pick)
-            the_money = Purchase.all.select {|selected_purchase| selected_purchase.dog.id == the_pick.id}
+             Purchase.all.select {|selected_purchase| selected_purchase.dog.id == the_pick.id}
             .reduce(0) {|acc, selected_purchase| acc + selected_purchase.product.price} + the_pick.price
-            binding.pry
+
 
         end
 
@@ -116,7 +117,7 @@ class Cli
         def check_out(access, the_pick)
             all_products = access.map {|selected_product| Product.find_by_name(selected_product)}
             all_products.each {|selected_product| Purchase.create(dog: the_pick, product: selected_product)}
-            total_price(all_products, the_pick)
+            @the_money = total_price(all_products, the_pick)
 
         end
            
@@ -132,9 +133,9 @@ class Cli
                 broken = access.pop
                 broken = access.join(", ")+ ", and " + last
                 system('clear')
-                puts "Thank you #{@user}! Your total price altogether for #{@meet_this_one} the #{broken} is $10000\n\nHave a great day, and we know #{@meet_this_one} will enjoy the #{broken}."
+                puts "Thank you #{@user}! Your total price altogether for #{@meet_this_one} the #{broken} is $#{@the_money}\n\nHave a great day, and we know #{@meet_this_one} will enjoy the #{broken}."
             else
-                puts "Thank you! #{user}! Your total price altogether for #{@meet_this_one} the #{access[0]} is $10000\n\nHave a great day, and we know #{@meet_this_one} will enjoy the #{access[0]}"
+                puts "Thank you! #{user}! Your total price altogether for #{@meet_this_one} the #{access[0]} is $#{@the_money}\n\nHave a great day, and we know #{@meet_this_one} will enjoy the #{access[0]}"
                 
                 Purchase.create(dog: the_pick, product: product_select)
                 # binding.pry
